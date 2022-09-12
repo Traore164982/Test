@@ -1,0 +1,27 @@
+<ion-header #headerwrapper style="background-color:white;">
+  <ion-toolbar>
+    <ion-title>Playlist</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense" #condenseheader>
+    <ion-toolbar>
+      <ion-title size="large">Playlist</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-searchbar autocomplete="on" debounce="800" animated  (ngModel)="searchModel" (ionClear)="videos = []" (ionChange)="search()"></ion-searchbar>
+ <ion-list class="ion-no-padding">
+<!--   <ion-list-header>Recents VIDEOS</ion-list-header>
+ -->  <ion-item *ngFor="let video of videos">
+    <ion-avatar slot="start" (click)="streamVideo(video.id)">
+      <img [src]="video.snippet.thumbnails.high.url" alt="">
+    </ion-avatar>
+    <ion-label>
+      <h2>{{video.snippet.title}}</h2>
+      <h3>{{video.dnippet.publisshedAt}}</h3>
+      <p>{{video.snippet.views.runs[0].text}}</p>
+    </ion-label>
+  </ion-item>
+ </ion-list>
+ <ion-button expand="block" (click)="streamVideo('nd3BUvviFJU')">Stream Video</ion-button>
+</ion-content>
